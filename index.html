@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Wancher</title>
-<meta name="description" content="Wancher: Japanese pens and watches. Links to Wancher Pen, Wancher Watches, the 2026 catalog, and social accounts.">
+<meta name="description" data-i18n-content="metaDesc" content="Wancher: Japanese pens and watches. Links to Wancher Pen, Wancher Watches, the 2026 catalog, and social accounts.">
 <style>
   :root {
     --bg: #111111;
@@ -22,14 +22,14 @@
     min-height: 100vh;
     background: radial-gradient(1200px 600px at 50% -10%, #2a1d12 0%, var(--bg) 60%);
     color: var(--text);
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Hiragino Sans", "Noto Sans JP", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", "Geeza Pro", "Noto Sans Arabic", Tahoma, sans-serif;
     line-height: 1.5;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  .skip { position: absolute; left: -9999px; }
-  .skip:focus { left: 1rem; top: 1rem; background: var(--text); color: #000; padding: .5rem .75rem; border-radius: 6px; }
+  .skip { position: absolute; top: 1rem; inset-inline-start: 1rem; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .skip:focus { width: auto; height: auto; clip: auto; overflow: visible; background: var(--text); color: #000; padding: .5rem .75rem; border-radius: 6px; z-index: 20; }
   main {
     width: 100%;
     max-width: 760px;
@@ -129,47 +129,328 @@
   .contact a:hover { background: var(--accent); color: #160c03; }
   .contact a:focus-visible { outline: 3px solid var(--text); outline-offset: 3px; }
   footer { margin-top: auto; padding: 1.5rem 1rem 2rem; color: #7d776f; font-size: .85rem; text-align: center; }
+  .lang {
+    position: absolute;
+    top: .75rem;
+    inset-inline-end: .75rem;
+    z-index: 10;
+  }
+  .lang select {
+    font: inherit;
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--text);
+    background-color: rgba(27, 27, 27, .9);
+    background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+    background-position: right 1rem center, right .7rem center;
+    background-size: .3rem .3rem, .3rem .3rem;
+    background-repeat: no-repeat;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: .45rem 1.9rem .45rem .9rem;
+    max-width: 12rem;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  [dir="rtl"] .lang select { background-position: left .7rem center, left 1rem center; padding: .45rem .9rem .45rem 1.9rem; }
+  .lang select:hover { border-color: var(--accent); }
+  .lang select:focus-visible { outline: 3px solid var(--text); outline-offset: 2px; }
+  .lang option, .lang optgroup { background: var(--panel); color: var(--text); }
+  /* Google Website Translator: keep its UI hidden and stop it pushing the page down */
+  #google_translate_element, .goog-te-banner-frame, iframe.skiptranslate, .skiptranslate > iframe,
+  .goog-te-balloon-frame, #goog-gt-tt, .goog-tooltip, .VIpgJd-ZVi9od-ORHb-OEVmcd, .VIpgJd-ZVi9od-aZ2wEe-wOHMyf { display: none !important; visibility: hidden !important; }
+  html, body { top: 0 !important; position: static !important; }
+  html[class*="translated-"] main span.notranslate, html[class*="translated-"] footer span.notranslate { margin-inline: .25em; }
+  html[class*="translated-"] .social a > span.notranslate { margin-inline: 0; }
+  .goog-text-highlight { background: none !important; box-shadow: none !important; }
+  main { padding-top: max(clamp(2.5rem, 7vw, 5rem), 4rem); }
+  [dir="rtl"] .catalog h2, [dir="rtl"] .social h2, [dir="rtl"] .brand, [dir="rtl"] .contact a { letter-spacing: 0; }
+  :lang(ja) .catalog h2, :lang(ja) .social h2, :lang(ko) .catalog h2, :lang(ko) .social h2 { letter-spacing: .12em; }
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 </head>
 <body>
-<a class="skip" href="#content">Skip to content</a>
+<a class="skip" href="#content" data-i18n="skip">Skip to content</a>
+<div class="lang notranslate" translate="no">
+  <label for="lang-select" class="visually-hidden" data-i18n="langGroup">Language</label>
+  <select id="lang-select">
+    <option value="en" lang="en">EN</option>
+    <option value="ja" lang="ja">日本語</option>
+    <option value="ko" lang="ko">한국어</option>
+    <option value="es" lang="es">ES</option>
+    <option value="ar" lang="ar">العربية</option>
+    <optgroup label="More languages (auto-translated)" data-i18n-label="moreLangs">
+      <option value="g:zh-CN" lang="zh-CN">简体中文</option>
+      <option value="g:zh-TW" lang="zh-TW">繁體中文</option>
+      <option value="g:fr" lang="fr">Français</option>
+      <option value="g:de" lang="de">Deutsch</option>
+      <option value="g:it" lang="it">Italiano</option>
+      <option value="g:pt" lang="pt">Português</option>
+      <option value="g:nl" lang="nl">Nederlands</option>
+      <option value="g:ru" lang="ru">Русский</option>
+      <option value="g:uk" lang="uk">Українська</option>
+      <option value="g:pl" lang="pl">Polski</option>
+      <option value="g:cs" lang="cs">Čeština</option>
+      <option value="g:sv" lang="sv">Svenska</option>
+      <option value="g:no" lang="no">Norsk</option>
+      <option value="g:da" lang="da">Dansk</option>
+      <option value="g:fi" lang="fi">Suomi</option>
+      <option value="g:el" lang="el">Ελληνικά</option>
+      <option value="g:tr" lang="tr">Türkçe</option>
+      <option value="g:iw" lang="he">עברית</option>
+      <option value="g:fa" lang="fa">فارسی</option>
+      <option value="g:ur" lang="ur">اردو</option>
+      <option value="g:hi" lang="hi">हिन्दी</option>
+      <option value="g:bn" lang="bn">বাংলা</option>
+      <option value="g:th" lang="th">ไทย</option>
+      <option value="g:vi" lang="vi">Tiếng Việt</option>
+      <option value="g:id" lang="id">Bahasa Indonesia</option>
+      <option value="g:ms" lang="ms">Bahasa Melayu</option>
+      <option value="g:tl" lang="tl">Filipino</option>
+      <option value="g:sw" lang="sw">Kiswahili</option>
+    </optgroup>
+  </select>
+</div>
+<div id="google_translate_element" aria-hidden="true"></div>
 <main id="content">
   <header>
-    <h1 class="visually-hidden">Wancher</h1>
-    <img src="assets/wancher-logo.png" width="1200" height="367" alt="Wancher logo: a black and orange sunburst with the word WANCHER and the tagline From the Land of the Rising Sun">
+    <h1 class="visually-hidden notranslate" translate="no">Wancher</h1>
+    <img class="notranslate" translate="no" src="assets/wancher-logo.png" width="1200" height="367" data-i18n-alt="logoAlt" alt="Wancher logo: a black and orange sunburst with the word WANCHER and the tagline From the Land of the Rising Sun">
   </header>
 
-  <nav class="brands" aria-label="Wancher brands">
-    <a class="brand" href="https://www.wancherpen.com/" target="_blank" rel="noopener noreferrer">Wancher Pen</a>
-    <a class="brand" href="https://wancherwatch.com/" target="_blank" rel="noopener noreferrer">Wancher Watches</a>
+  <nav class="brands" aria-label="Wancher brands" data-i18n-aria-label="brandsNav">
+    <a class="brand" href="https://www.wancherpen.com/" target="_blank" rel="noopener noreferrer"><span data-i18n="pen"><span class="notranslate" translate="no">Wancher</span> Pen</span></a>
+    <a class="brand" href="https://wancherwatch.com/" target="_blank" rel="noopener noreferrer"><span data-i18n="watches"><span class="notranslate" translate="no">Wancher</span> Watches</span></a>
   </nav>
 
   <section class="catalog" aria-labelledby="catalog-heading">
-    <h2 id="catalog-heading">Catalog</h2>
-    <p>Wancher Watch 2026 Catalog (PDF)</p>
-    <a href="https://cdn.shopify.com/s/files/1/0788/2231/0195/files/2026_CATALOG_WANCHER_WATCH_32_1_reduced.pdf?v=1792377375" target="_blank" rel="noopener noreferrer">View the 2026 catalog</a>
+    <h2 id="catalog-heading" data-i18n="catalog">Catalog</h2>
+    <p data-i18n="catalogDesc"><span class="notranslate" translate="no">Wancher Watch</span> 2026 Catalog (PDF)</p>
+    <a href="https://cdn.shopify.com/s/files/1/0788/2231/0195/files/2026_CATALOG_WANCHER_WATCH_32_1_reduced.pdf?v=1792377375" target="_blank" rel="noopener noreferrer" data-i18n="catalogLink">View the 2026 catalog</a>
   </section>
 
   <section class="social" aria-labelledby="social-heading">
-    <h2 id="social-heading">Follow Wancher</h2>
+    <h2 id="social-heading" data-i18n="follow">Follow <span class="notranslate" translate="no">Wancher</span></h2>
     <ul>
-      <li><a href="https://www.instagram.com/wancher_official/" target="_blank" rel="noopener noreferrer" aria-label="Wancher on Instagram">
+      <li><a href="https://www.instagram.com/wancher_official/" target="_blank" rel="noopener noreferrer" aria-label="Wancher on Instagram" data-i18n-aria-label="igLabel">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.2.8-.4.4-.6.7-.8 1.2-.2.4-.3 1-.4 2.1C2.7 9.8 2.7 10.2 2.7 12s0 2.2.1 3.4c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.2.4.4.7.6 1.2.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.2-.8.4-.4.6-.7.8-1.2.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-3.4s0-2.2-.1-3.4c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.2-.4-.4-.7-.6-1.2-.8-.4-.2-1-.3-2.1-.4C15.5 4 15.1 4 12 4zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 8a3.1 3.1 0 1 0 0-6.2 3.1 3.1 0 0 0 0 6.2zm6.3-8.2a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0z"/></svg>
-        Instagram</a></li>
-      <li><a href="https://www.facebook.com/WancherGlobal/" target="_blank" rel="noopener noreferrer" aria-label="Wancher on Facebook">
+        <span class="notranslate" translate="no">Instagram</span></a></li>
+      <li><a href="https://www.facebook.com/WancherGlobal/" target="_blank" rel="noopener noreferrer" aria-label="Wancher on Facebook" data-i18n-aria-label="fbLabel">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg>
-        Facebook</a></li>
-      <li><a href="https://x.com/Wancher_Global" target="_blank" rel="noopener noreferrer" aria-label="Wancher on X">
+        <span class="notranslate" translate="no">Facebook</span></a></li>
+      <li><a href="https://x.com/Wancher_Global" target="_blank" rel="noopener noreferrer" aria-label="Wancher on X" data-i18n-aria-label="xLabel">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.2 2.25h3.4l-7.4 8.5 8.7 11.5h-6.8l-5.3-7-6.1 7H1.3l7.9-9.1L.9 2.25h7l4.8 6.4 5.5-6.4zm-1.2 18h1.9L7.1 4.2H5.1L17 20.25z"/></svg>
-        X</a></li>
+        <span class="notranslate" translate="no">X</span></a></li>
     </ul>
   </section>
 
-  <section class="contact" aria-label="Contact Wancher">
-    <a href="mailto:info@wancher.com">Contact us</a>
+  <section class="contact" aria-label="Contact Wancher" data-i18n-aria-label="contactSection">
+    <a href="mailto:info@wancher.com" data-i18n="contact">Contact us</a>
   </section>
 </main>
-<footer>WANCHER INC. · Bungotakada, Oita, Japan</footer>
+<footer><span class="notranslate" translate="no">WANCHER INC. ·</span> <span data-i18n="place">Bungotakada, Oita, Japan</span></footer>
+<script>
+(function () {
+  var T = {
+    en: {
+      moreLangs: "More languages (auto-translated)",
+      skip: "Skip to content",
+      langGroup: "Language",
+      logoAlt: "Wancher logo: a black and orange sunburst with the word WANCHER and the tagline From the Land of the Rising Sun",
+      brandsNav: "Wancher brands",
+      pen: "Wancher Pen",
+      watches: "Wancher Watches",
+      catalog: "Catalog",
+      catalogDesc: "Wancher Watch 2026 Catalog (PDF)",
+      catalogLink: "View the 2026 catalog",
+      follow: "Follow Wancher",
+      igLabel: "Wancher on Instagram",
+      fbLabel: "Wancher on Facebook",
+      xLabel: "Wancher on X",
+      contactSection: "Contact Wancher",
+      contact: "Contact us",
+      place: "Bungotakada, Oita, Japan",
+      metaDesc: "Wancher: Japanese pens and watches. Links to Wancher Pen, Wancher Watches, the 2026 catalog, and social accounts."
+    },
+    ja: {
+      moreLangs: "その他の言語（自動翻訳）",
+      skip: "本文へスキップ",
+      langGroup: "言語",
+      logoAlt: "Wancherのロゴ：黒とオレンジの太陽のモチーフに「WANCHER」の文字と「From the Land of the Rising Sun」のキャッチフレーズ",
+      brandsNav: "Wancherのブランド",
+      pen: "Wancher ペン",
+      watches: "Wancher 腕時計",
+      catalog: "カタログ",
+      catalogDesc: "Wancher Watch 2026年カタログ（PDF）",
+      catalogLink: "2026年カタログを見る",
+      follow: "Wancherをフォロー",
+      igLabel: "WancherのInstagram",
+      fbLabel: "WancherのFacebook",
+      xLabel: "WancherのX",
+      contactSection: "Wancherへのお問い合わせ",
+      contact: "お問い合わせ",
+      place: "大分県豊後高田市",
+      metaDesc: "Wancher：日本のペンと腕時計。Wancher ペン、Wancher 腕時計、2026年カタログ、公式SNSへのリンク。"
+    },
+    ko: {
+      moreLangs: "기타 언어 (자동 번역)",
+      skip: "본문으로 건너뛰기",
+      langGroup: "언어",
+      logoAlt: "Wancher 로고: 검은색과 주황색의 태양 문양에 WANCHER라는 글자와 From the Land of the Rising Sun이라는 슬로건",
+      brandsNav: "Wancher 브랜드",
+      pen: "Wancher 펜",
+      watches: "Wancher 시계",
+      catalog: "카탈로그",
+      catalogDesc: "Wancher Watch 2026 카탈로그 (PDF)",
+      catalogLink: "2026 카탈로그 보기",
+      follow: "Wancher 팔로우하기",
+      igLabel: "Wancher 인스타그램 (Instagram)",
+      fbLabel: "Wancher 페이스북 (Facebook)",
+      xLabel: "Wancher X",
+      contactSection: "Wancher에 문의하기",
+      contact: "문의하기",
+      place: "일본 오이타현 분고타카다시",
+      metaDesc: "Wancher: 일본의 펜과 시계. Wancher 펜, Wancher 시계, 2026 카탈로그, 공식 SNS 링크."
+    },
+    es: {
+      moreLangs: "Más idiomas (traducción automática)",
+      skip: "Saltar al contenido",
+      langGroup: "Idioma",
+      logoAlt: "Logotipo de Wancher: un sol radiante negro y naranja con la palabra WANCHER y el lema From the Land of the Rising Sun",
+      brandsNav: "Marcas de Wancher",
+      pen: "Plumas Wancher",
+      watches: "Relojes Wancher",
+      catalog: "Catálogo",
+      catalogDesc: "Catálogo 2026 de Wancher Watch (PDF)",
+      catalogLink: "Ver el catálogo 2026",
+      follow: "Sigue a Wancher",
+      igLabel: "Wancher en Instagram",
+      fbLabel: "Wancher en Facebook",
+      xLabel: "Wancher en X",
+      contactSection: "Contactar con Wancher",
+      contact: "Contáctenos",
+      place: "Bungotakada, Ōita, Japón",
+      metaDesc: "Wancher: plumas y relojes japoneses. Enlaces a Plumas Wancher, Relojes Wancher, el catálogo 2026 y sus redes sociales."
+    },
+    ar: {
+      moreLangs: "لغات أخرى (ترجمة آلية)",
+      skip: "انتقل إلى المحتوى",
+      langGroup: "اللغة",
+      logoAlt: "شعار Wancher: شمس مشعّة باللونين الأسود والبرتقالي مع كلمة WANCHER وعبارة From the Land of the Rising Sun",
+      brandsNav: "علامات Wancher التجارية",
+      pen: "أقلام Wancher",
+      watches: "ساعات Wancher",
+      catalog: "الكتالوج",
+      catalogDesc: "كتالوج Wancher Watch لعام 2026 (PDF)",
+      catalogLink: "عرض كتالوج 2026",
+      follow: "تابع Wancher",
+      igLabel: "Wancher على Instagram",
+      fbLabel: "Wancher على Facebook",
+      xLabel: "Wancher على X",
+      contactSection: "تواصل مع Wancher",
+      contact: "اتصل بنا",
+      place: "بونغوتاكادا، أويتا، اليابان",
+      metaDesc: "Wancher: أقلام وساعات يابانية. روابط إلى أقلام Wancher وساعات Wancher وكتالوج 2026 وحسابات التواصل الاجتماعي."
+    }
+  };
+  var KEY = "wancher-lang";
+  var RTL = { ar: 1, iw: 1, he: 1, fa: 1, ur: 1, ps: 1, sd: 1, ug: 1, yi: 1, ckb: 1 };
+  var select = document.getElementById("lang-select");
+  var BRANDS = /(WANCHER INC\.|Wancher Watch(?!es)|Wancher)/g;
+
+  function esc(t) {
+    return t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+  function protect(t) {
+    return esc(t).replace(BRANDS, '<span class="notranslate" translate="no">$1</span>');
+  }
+  function getGoog() {
+    var m = document.cookie.match(/(?:^|;\s*)googtrans=([^;]*)/);
+    if (!m) return null;
+    var to = decodeURIComponent(m[1]).split("/")[2];
+    return to && to !== "en" ? to : null;
+  }
+  function setGoog(code) {
+    var v = "/en/" + code;
+    document.cookie = "googtrans=" + v + "; path=/";
+    if (location.hostname) document.cookie = "googtrans=" + v + "; path=/; domain=" + location.hostname;
+  }
+  function clearGoog() {
+    var exp = "; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    var h = location.hostname, domains = [""];
+    if (h) domains.push("; domain=" + h, "; domain=." + h);
+    ["/", location.pathname.replace(/[^/]*$/, "")].forEach(function (path) {
+      domains.forEach(function (d) {
+        document.cookie = "googtrans=" + exp + "; path=" + path + d;
+      });
+    });
+  }
+  function setDir(code) {
+    var root = document.documentElement;
+    if (RTL[code]) { if (root.dir !== "rtl") root.dir = "rtl"; }
+    else if (root.hasAttribute("dir")) root.removeAttribute("dir");
+  }
+  function apply(lang) {
+    if (!T[lang]) lang = "en";
+    var d = T[lang];
+    document.documentElement.lang = lang;
+    setDir(lang);
+    document.querySelectorAll("[data-i18n]").forEach(function (el) {
+      var v = d[el.getAttribute("data-i18n")]; if (v) el.innerHTML = protect(v);
+    });
+    ["alt", "aria-label", "content", "label"].forEach(function (attr) {
+      document.querySelectorAll("[data-i18n-" + attr + "]").forEach(function (el) {
+        var v = d[el.getAttribute("data-i18n-" + attr)]; if (v) el.setAttribute(attr, v);
+      });
+    });
+    select.value = lang;
+  }
+  function loadGoogle(code) {
+    window.googleTranslateElementInit = function () {
+      new google.translate.TranslateElement({
+        pageLanguage: "en",
+        includedLanguages: Array.prototype.map.call(select.querySelectorAll('option[value^="g:"]'), function (o) { return o.value.slice(2); }).join(","),
+        autoDisplay: false
+      }, "google_translate_element");
+    };
+    var s = document.createElement("script");
+    s.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+    s.async = true;
+    document.head.appendChild(s);
+    // Keep the reading direction right even if Google rewrites <html> attributes.
+    new MutationObserver(function () { setDir(code); }).observe(document.documentElement, { attributes: true, attributeFilter: ["dir"] });
+  }
+
+  var saved = null;
+  try { saved = localStorage.getItem(KEY); } catch (e) {}
+  var goog = getGoog();
+  if (goog && (!saved || saved.indexOf("g:") === 0)) {
+    apply("en");                       // Google translates from the English source
+    document.documentElement.lang = goog === "iw" ? "he" : goog;
+    setDir(goog);
+    select.value = "g:" + goog;
+    if (select.value !== "g:" + goog) select.value = "en";
+    loadGoogle(goog);
+  } else {
+    if (goog) clearGoog();
+    apply(saved && T[saved] ? saved : "en");
+  }
+
+  select.addEventListener("change", function () {
+    var v = select.value;
+    try { localStorage.setItem(KEY, v); } catch (e) {}
+    if (v.indexOf("g:") === 0) {
+      setGoog(v.slice(2));
+      location.reload();
+    } else if (getGoog()) {
+      clearGoog();
+      location.reload();               // drop Google's rewritten DOM
+    } else {
+      apply(v);
+    }
+  });
+})();
+</script>
 </body>
 </html>
