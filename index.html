@@ -113,6 +113,21 @@
   }
   .social a:hover { border-color: var(--accent); background: #231a12; }
   .social svg { width: 1.15rem; height: 1.15rem; fill: currentColor; flex: none; }
+  .contact { width: 100%; text-align: center; }
+  .contact a {
+    display: inline-block;
+    padding: .9rem 2rem;
+    border-radius: 999px;
+    border: 1px solid var(--accent);
+    background: transparent;
+    color: var(--text);
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-decoration: none;
+    transition: background .15s ease, color .15s ease;
+  }
+  .contact a:hover { background: var(--accent); color: #160c03; }
+  .contact a:focus-visible { outline: 3px solid var(--text); outline-offset: 3px; }
   footer { margin-top: auto; padding: 1.5rem 1rem 2rem; color: #7d776f; font-size: .85rem; text-align: center; }
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
@@ -149,6 +164,10 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.2 2.25h3.4l-7.4 8.5 8.7 11.5h-6.8l-5.3-7-6.1 7H1.3l7.9-9.1L.9 2.25h7l4.8 6.4 5.5-6.4zm-1.2 18h1.9L7.1 4.2H5.1L17 20.25z"/></svg>
         X</a></li>
     </ul>
+  </section>
+
+  <section class="contact" aria-label="Contact Wancher">
+    <a href="mailto:info@wancher.com">Contact us</a>
   </section>
 </main>
 <footer>WANCHER INC. · Bungotakada, Oita, Japan</footer>
